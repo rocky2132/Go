@@ -135,31 +135,24 @@ func main() {
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Slip16q1
-
-// area/rectangle.go
-package area
-
-// Function to calculate the area of a rectangle
-func Rectangle(length, width float64) float64 {
-	return length * width
-}
-
-// main.go
 package main
-
 import (
 	"fmt"
-	"area"
-)
-
-func main() {
-	var length, width float64
-	fmt.Print("Enter length and width of the rectangle: ")
-	fmt.Scan(&length, &width)
-
-	area := area.Rectangle(length, width)
-	fmt.Println("Area of the rectangle:", area)
+	"math/rand"
+	"time")
+func delay() {
+	rd := time.Duration(rand.Intn(251)) * time.Millisecond
+	time.Sleep(rd) 
 }
+func main() {
+	rand.Seed(time.Now().UnixNano())
+	for i := 0; i <= 10; i++ {
+		fmt.Println(i)
+		delay() 
+	}
+}
+
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -194,6 +187,7 @@ func main() {
 	fmt.Println("Multiplication:", mul)
 	fmt.Println("Division:", div)
 }
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
