@@ -1,0 +1,273 @@
+Slip11q1
+package main
+
+import (
+	"fmt"
+)
+
+func isTwoDigit(num int) bool {
+	return num >= 10 && num <= 99 || num <= -10 && num >= -99
+}
+
+func main() {
+	var num int
+	fmt.Print("Enter a number: ")
+	fmt.Scan(&num)
+
+	if isTwoDigit(num) {
+		fmt.Println(num, "is a two-digit number.")
+	} else {
+		fmt.Println(num, "is not a two-digit number.")
+	}
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Slip12q1
+
+package main
+
+import (
+	"fmt"
+)
+
+func swap(a, b *int) {
+	*a, *b = *b, *a
+}
+
+func main() {
+	var num1, num2 int
+	fmt.Print("Enter two numbers: ")
+	fmt.Scan(&num1, &num2)
+
+	fmt.Println("Before swapping:")
+	fmt.Println("Num1:", num1, "Num2:", num2)
+
+	swap(&num1, &num2)
+
+	fmt.Println("After swapping:")
+	fmt.Println("Num1:", num1, "Num2:", num2)
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Slip13q1
+
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	evenSum, oddSum := 0, 0
+
+	for i := 1; i <= 100; i++ {
+		if i%2 == 0 {
+			evenSum += i
+		} else {
+			oddSum += i
+		}
+	}
+
+	fmt.Println("Sum of even numbers between 1 to 100:", evenSum)
+	fmt.Println("Sum of odd numbers between 1 to 100:", oddSum)
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Slip14q1
+
+package main
+
+import "fmt"
+
+func main() {
+	// Create a slice
+	nums := []int{1, 2, 3, 4, 5}
+	fmt.Println("Original Slice:", nums)
+
+	// Append an element
+	nums = append(nums, 6)
+	fmt.Println("After Append:", nums)
+
+	// Remove an element at index 2 (value 3)
+	index := 2
+	nums = append(nums[:index], nums[index+1:]...)
+	fmt.Println("After Removing Element:", nums)
+
+	// Copy slice
+	newNums := make([]int, len(nums))
+	copy(newNums, nums)
+	fmt.Println("Copied Slice:", newNums)
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Slip15q1
+
+package main
+
+import "fmt"
+
+// Function that returns multiple values
+func calculate(a int, b int) (int, int) {
+	sum := a + b
+	diff := a - b
+	return sum, diff
+}
+
+func main() {
+	// Taking two numbers as input
+	var num1, num2 int
+	fmt.Print("Enter two numbers: ")
+	fmt.Scan(&num1, &num2)
+
+	// Calling function and getting multiple return values
+	sum, diff := calculate(num1, num2)
+
+	// Printing results
+	fmt.Println("Sum:", sum)
+	fmt.Println("Difference:", diff)
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Slip16q1
+
+// area/rectangle.go
+package area
+
+// Function to calculate the area of a rectangle
+func Rectangle(length, width float64) float64 {
+	return length * width
+}
+
+// main.go
+package main
+
+import (
+	"fmt"
+	"area"
+)
+
+func main() {
+	var length, width float64
+	fmt.Print("Enter length and width of the rectangle: ")
+	fmt.Scan(&length, &width)
+
+	area := area.Rectangle(length, width)
+	fmt.Println("Area of the rectangle:", area)
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Slip17q1
+
+package main
+
+import "fmt"
+
+// Function that returns multiple values
+func calculate(a, b float64) (float64, float64, float64, float64) {
+	add := a + b
+	sub := a - b
+	mul := a * b
+	div := a / b
+	return add, sub, mul, div
+}
+
+func main() {
+	var num1, num2 float64
+
+	// Taking input
+	fmt.Print("Enter two numbers: ")
+	fmt.Scan(&num1, &num2)
+
+	// Calling function and receiving multiple values
+	add, sub, mul, div := calculate(num1, num2)
+
+	// Displaying results
+	fmt.Println("Addition:", add)
+	fmt.Println("Subtraction:", sub)
+	fmt.Println("Multiplication:", mul)
+	fmt.Println("Division:", div)
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+slip18q1
+
+package main
+
+import "fmt"
+
+// Function to print multiplication table
+func printTable(num int) {
+	for i := 1; i <= 10; i++ {
+		fmt.Printf("%d x %d = %d\n", num, i, num*i)
+	}
+}
+
+func main() {
+	var num int
+	fmt.Print("Enter a number: ")
+	fmt.Scan(&num)
+
+	// Calling function to print the table
+	printTable(num)
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+slip19q1
+
+package main
+
+import "fmt"
+
+func calculate(a, b int) (int, int) {
+	return a + b, a - b
+}
+
+func main() {
+	var num1, num2 int
+	fmt.Print("Enter two numbers: ")
+	fmt.Scan(&num1, &num2)
+
+	// Calling function and receiving multiple values
+	add, sub := calculate(num1, num2)
+
+	// Displaying results
+	fmt.Println("Addition:", add)
+	fmt.Println("Subtraction:", sub)
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Slip20q2
+
+package main
+
+import "fmt"
+
+func main() {
+	// Create a channel of integers
+	ch := make(chan int)
+
+	// Goroutine to send values
+	go func() {
+		for i := 1; i <= 5; i++ {
+			ch <- i // Sending values to the channel
+		}
+		fmt.Println("close the channel")
+		close(ch) // Closing the channel
+	}()
+
+	// Receiving values using for-range loop
+	for num := range ch {
+		fmt.Println(num)
+	}
+}
+

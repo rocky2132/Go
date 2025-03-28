@@ -1,0 +1,320 @@
+Slip1q1
+
+package main
+import (
+	"fmt"
+)
+func main() {
+	var num1, num2 float64
+	var choice int
+	fmt.Println("Enter two numbers:")
+	fmt.Scan(&num1, &num2)
+	fmt.Println("Choose an operation:")
+	fmt.Println("1. Addition")
+	fmt.Println("2. Subtraction")
+	fmt.Println("3. Multiplication")
+	fmt.Println("4. Division")
+	fmt.Scan(&choice)
+	switch choice {
+	case 1:
+		fmt.Printf("Result: %.2f\n", num1+num2)
+	case 2:
+		fmt.Printf("Result: %.2f\n", num1-num2)
+	case 3:
+		fmt.Printf("Result: %.2f\n", num1*num2)
+	case 4:
+		fmt.Printf("Result: %.2f\n", num1/num2)
+	default:
+		fmt.Println("Invalid choice.")
+	}
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+slip2q1
+
+package main
+
+import "fmt"
+
+// Function to print Fibonacci series
+func fibonacci(n int) {
+	a, b := 0, 1
+	for i := 0; i < n; i++ {
+		fmt.Print(a, " ")
+		a, b = b, a+b
+	}
+	fmt.Println()
+}
+
+func main() {
+	var n int
+	fmt.Print("Enter the number of terms: ")
+	fmt.Scan(&n)
+
+	// Calling function to print Fibonacci series
+	fibonacci(n)
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Slip3q1
+
+package main
+
+import (
+	"fmt"
+)
+
+func isPalindrome(num int) bool {
+	rev, temp := 0, num
+	for temp > 0 {
+		digit := temp % 10
+		rev = rev*10 + digit
+		temp /= 10
+	}
+	return num == rev
+}
+
+func main() {
+	var num int
+	fmt.Print("Enter a number: ")
+	fmt.Scan(&num)
+
+	if isPalindrome(num) {
+		fmt.Println(num, "is a palindrome.")
+	} else {
+		fmt.Println(num, "is not a palindrome.")
+	}
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Slip4q2
+
+package main
+
+import (
+	"fmt"
+	"sort"
+)
+
+func main() {
+	var n int
+	fmt.Print("Enter the number of elements: ")
+	fmt.Scan(&n)
+
+	numbers := make([]int, n)
+	fmt.Println("Enter the elements:")
+	for i := 0; i < n; i++ {
+		fmt.Scan(&numbers[i])
+	}
+
+	sort.Ints(numbers)
+	fmt.Println("Sorted array in ascending order:", numbers)
+}
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Slip5q2
+
+package main
+
+import (
+	"fmt"
+)
+
+type Employee struct {
+	Eno    int
+	Ename  string
+	Salary float64
+}
+
+func main() {
+	var n int
+	fmt.Print("Enter the number of employees: ")
+	fmt.Scan(&n)
+
+	employees := make([]Employee, n)
+	fmt.Println("Enter employee details (Eno, Ename, Salary):")
+	for i := 0; i < n; i++ {
+		fmt.Scan(&employees[i].Eno, &employees[i].Ename, &employees[i].Salary)
+	}
+
+	minSalary := employees[0].Salary
+	for _, emp := range employees {
+		if emp.Salary < minSalary {
+			minSalary = emp.Salary
+		}
+	}
+
+	fmt.Println("Employees with minimum salary:")
+	for _, emp := range employees {
+		if emp.Salary == minSalary {
+			fmt.Printf("Eno: %d, Ename: %s, Salary: %.2f\n", emp.Eno, emp.Ename, emp.Salary)
+		}
+	}
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Slip6q2
+
+
+package main
+
+import (
+	"fmt"
+)
+
+func copyArray(src []int) []int {
+	dest := make([]int, len(src))
+	copy(dest, src)
+	return dest
+}
+
+func main() {
+	var n int
+	fmt.Print("Enter the number of elements: ")
+	fmt.Scan(&n)
+
+	sourceArray := make([]int, n)
+	fmt.Println("Enter the elements:")
+	for i := 0; i < n; i++ {
+		fmt.Scan(&sourceArray[i])
+	}
+
+	copiedArray := copyArray(sourceArray)
+	fmt.Println("Copied array:", copiedArray)
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Slip7q2
+
+package main
+
+import (
+	"fmt"
+)
+
+type Student struct {
+	RollNo int
+	Name   string
+	Marks  float64
+}
+
+func (s *Student) show() {
+	fmt.Printf("Roll No: %d\nName: %s\nMarks: %.2f\n", s.RollNo, s.Name, s.Marks)
+}
+
+func main() {
+	var s Student
+	fmt.Print("Enter Roll No, Name, and Marks: ")
+	fmt.Scan(&s.RollNo, &s.Name, &s.Marks)
+
+	s.show()
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Slip8q1
+
+package main
+
+import (
+	"fmt"
+)
+
+type Book struct {
+	BookID int
+	Title  string
+	Author string
+	Price  float64
+}
+
+func main() {
+	var n int
+	fmt.Print("Enter the number of books: ")
+	fmt.Scan(&n)
+
+	books := make([]Book, n)
+	fmt.Println("Enter book details (BookID, Title, Author, Price):")
+	for i := 0; i < n; i++ {
+		fmt.Scan(&books[i].BookID, &books[i].Title, &books[i].Author, &books[i].Price)
+	}
+
+	fmt.Println("\nBook Details:")
+	for _, book := range books {
+		fmt.Printf("BookID: %d\nTitle: %s\nAuthor: %s\nPrice: %.2f\n\n", book.BookID, book.Title, book.Author, book.Price)
+	}
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Slip9q1
+
+package main
+
+import (
+	"fmt"
+)
+
+func isPalindrome(num int) bool {
+	rev, temp := 0, num
+	for temp > 0 {
+		digit := temp % 10
+		rev = rev*10 + digit
+		temp /= 10
+	}
+	return num == rev
+}
+
+func main() {
+	var num int
+	fmt.Print("Enter a number: ")
+	fmt.Scan(&num)
+
+	if isPalindrome(num) {
+		fmt.Println(num, "is a palindrome.")
+	} else {
+		fmt.Println(num, "is not a palindrome.")
+	}
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Slip10q2
+
+package main
+
+import (
+	"fmt"
+)
+
+func fibonacci(n int, ch chan int) {
+	a, b := 0, 1
+	for i := 0; i < n; i++ {
+		ch <- a
+		a, b = b, a+b
+	}
+	close(ch)
+}
+
+func main() {
+	var n int
+	fmt.Print("Enter the number of terms: ")
+	fmt.Scan(&n)
+
+	ch := make(chan int)
+	go fibonacci(n, ch)
+
+	fmt.Println("Fibonacci Series:")
+	for num := range ch {
+		fmt.Print(num, " ")
+	}
+	fmt.Println()
+}
+
